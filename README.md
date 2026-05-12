@@ -2,7 +2,7 @@
 
 LSYN is a custom JSON-based file format that combines site data and rendering logic into one file.
 
-> **Project Note:** I built this in like 10 minutes because I was bored. It really has no porous.
+> **Project Note:** I built this in like 10 minutes because I was bored. It really has no purpose.
 
 ## Why use LSYN?
 It's cool
