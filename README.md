@@ -1,0 +1,2 @@
+# LSYN
+JSON but better
