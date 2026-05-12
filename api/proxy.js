@@ -36,7 +36,26 @@ export default async function handler(req) {
     newHeaders.delete("content-security-policy");
     newHeaders.delete("x-frame-options");
 
-    return new Response(response.body, {
+    let body = response.body;
+
+    const contentType = response.headers.get("content-type") || "";
+    if (contentType.includes("text/html")) {
+      let htmlText = await response.text();
+      const baseHref = `/${app}/`;
+      
+      if (htmlText.includes("<head>")) {
+        htmlText = htmlText.replace("<head>", `<head><base href="${baseHref}">`);
+      } else if (htmlText.includes("<html")) {
+        htmlText = htmlText.replace(/<html[^>]*>/i, `<html><head><base href="${baseHref}"></head>`);
+      } else {
+        htmlText = `<base href="${baseHref}">\n` + htmlText;
+      }
+
+      body = htmlText;
+      newHeaders.set("content-type", "text/html; charset=utf-8");
+    }
+
+    return new Response(body, {
       status: response.status,
       headers: newHeaders
     });
