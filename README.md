@@ -1,5 +1,7 @@
 # LSYN (Linear Syntax Node)
 
+It doesn't even work btw I can't figure out why but I now have a short vercel link so that's cool
+
 LSYN is a custom JSON-based file format that combines site data and rendering logic into one file.
 
 > **Project Note:** I built this in like 10 minutes because I was bored. It really has no purpose.
