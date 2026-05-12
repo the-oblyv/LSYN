@@ -1,0 +1,13 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/index.lsyn" }
+  ],
+  "headers": [
+    {
+      "source": "/index.lsyn",
+      "headers": [
+        { "key": "Content-Type", "value": "text/html" }
+      ]
+    }
+  ]
+}
