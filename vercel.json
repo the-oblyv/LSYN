@@ -1,21 +1,5 @@
 {
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/", "destination": "/index.lsyn" }
-  ],
-  "headers": [
-    {
-      "source": "/(.*).lsyn",
-      "headers": [
-        {
-          "key": "Content-Type",
-          "value": "text/html"
-        },
-        {
-          "key": "Content-Disposition",
-          "value": "inline"
-        }
-      ]
-    }
+  "routes": [
+    { "src": "/(.*)", "dest": "/api/proxy" }
   ]
 }
