@@ -1,20 +1,28 @@
+<script type="application/lsyn" id="lsyn-data">
 {
   "type": "LSYN",
-  "project": "LSYN Website",
+  "project": "LSYN Official Site",
   "content": [
-    {"type": "h1", "text": "Powered by LSYN"},
-    {"type": "p", "text": "This page is rendered from index.lsyn"}
+    {"type": "h1", "text": "Welcome to LSYN"},
+    {"type": "p", "text": "(Why are you here?)"}
   ]
 }
-<!-- LSYN BOOTSTRAPPER -->
+</script>
+
+<div id="app"></div>
+
 <script>
-  // Hide the raw JSON text immediately
-  document.documentElement.style.display = 'none';
-  window.onload = () => {
-    const rawData = document.body.innerText.split('<!--')[0];
-    const data = JSON.parse(rawData);
-    document.body.innerHTML = `<h1>${data.content[0].text}</h1><p>${data.content[1].text}</p>`;
-    document.documentElement.style.display = 'block';
-    document.body.style.fontFamily = 'sans-serif';
-  };
+  // Simple LSYN Interpreter
+  const raw = document.getElementById('lsyn-data').innerHTML;
+  const lsyn = JSON.parse(raw);
+  const app = document.getElementById('app');
+
+  lsyn.content.forEach(node => {
+    const el = document.createElement(node.type);
+    el.innerText = node.text;
+    app.appendChild(el);
+  });
+
+  document.body.style.fontFamily = 'sans-serif';
+  document.body.style.padding = '2rem';
 </script>
